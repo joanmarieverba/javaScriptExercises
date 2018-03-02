@@ -8,13 +8,56 @@
 </head>
 <body>
     
-    <p id="target">Hello World</p>
+
+    <h1>The Game</h1>
+    <h2 id="rock">Rock</h2>
+    <br />
+    <h2 id="paper">Paper</h2>
+    <br />
+    <h2 id="scissors">Scissors</h2>
+
+    <p id="target"></p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
 
     <script>
+        $(document).ready(function() {
+            let p1;
+            let p2;
+     
 
-        const p1 = prompt("Player 1: Rock, paper, or scissors?").toLowerCase();
-        const p2 = prompt("Player 2: Rock, paper, or scissors?").toLowerCase();
-        const target = document.querySelector("#target");
+                //if click on rock, p1 will be rock, etc.
+            $("#rock").click(function(){
+                p1 = "rock";
+                winningConditions();
+            });
+
+            $("#paper").click(function () {
+                p1 = "paper";
+                winningConditions();
+            });
+
+            $("#scissors").click(function () {
+                p1 = "scissors";
+                winningConditions();
+            });
+      
+            const randomNumber = Math.floor(Math.random() * Math.floor(3));
+            
+            if (randomNumber === 0) {
+                p2 = "rock";
+            
+            } else if (randomNumber === 1) {
+                p2 = "scissors";
+               
+            } else {
+                p2 = "paper";
+              
+            }
+           
+     const winningConditions = function ()    {  
+       const target = document.querySelector("#target");
 
         if (p1 === "rock" && p2 === "paper"){
             target.innerHTML = "P2 wins!"
@@ -33,6 +76,14 @@
         } else {
              target.innerHTML = "Someone really botched this!"
         }
+     } 
+  })  //end of Document.ready
+
+        // const p1 = prompt("Player 1: Rock, paper, or scissors?").toLowerCase();
+        // const p2 = prompt("Player 2: Rock, paper, or scissors?").toLowerCase();
+        // 
+
+
         
     </script>
 </body>
